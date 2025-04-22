@@ -1,3 +1,5 @@
+NOTE: this is just full clone of original repository
+there only simple changes in syntax/log.vim to adapt my personal needs
 # log-highlight.nvim
 
 A simple and lightweight Neovim plugin that brings syntax highlighting to
