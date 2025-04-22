@@ -86,18 +86,23 @@ syn match logSHA        display     '\<\(\x\{40}\|\x\{56}\|\x\{64}\|\x\{96}\|\x\
 " Must be start-of-line or prefixed with space
 syn match logPath       display     '\(^\|\s\)\(\.\{0,2}\|\~\)\/[[:alnum:]\/\.:_-]\+'
 
+" lexaone additions 
+syn keyword logNormal       normal NORMAL Normal 
+syn keyword logClear        clear Clear CLEAR
+syn keyword logSuccess      SUCCESS success Success
+syn keyword logHealthy      healthy Healthy HEALTHY
+syn keyword logOptimal      optimal Optimal OPTIMAL
+syn keyword logBad          bad Bad BAD
+syn match logWarn       display     '!!!.*!!!'
 " Log Levels
 " ------------------------------
-syn keyword logLvFatal      FATAL Fatal fatal
-syn keyword logLvEmergency  EMERGENCY EMERG Emergency emergency
-syn keyword logLvAlert      ALERT Alert alert
+syn keyword logLvFatal      FATAL fatal Fatal
+syn keyword logLvEmergency  EMERGENCY EMERG
+syn keyword logLvAlert      ALERT
 syn keyword logLvCritical   CRITICAL CRIT Critical critical
-syn keyword logLvError      ERROR ERRORS ERR E Error Errors Err error errors err
-syn keyword logLvFailure    FAILURE FAILED FAIL F Failure Failed Fail failure failed fail
-syn keyword logLvFault      FAULT Fault fault
-syn keyword logLvNack       NACK NAK Nack Nak nack nak
-syn keyword logLvWarning    WARNING WARN W Warning Warn warning warn
-syn keyword logLvBad        BAD Bad bad
+syn keyword logLvError      ERROR ERRORS ERR E error
+syn keyword logLvFailure    FAILURE FAILED FAIL F failed
+syn keyword logLvWarning    WARNING WARN W warning warn
 syn keyword logLvNotice     NOTICE
 syn keyword logLvInfo       INFO I info
 syn keyword logLvDebug      DEBUG DBG D debug dbg
@@ -124,7 +129,7 @@ syn match logLvInfo         display '\[\zsinfo\ze\]'
 syn match logLvDebug        display '\[\zsdebug\ze\]'
 syn match logLvTrace        display '\[\zstrace\ze\]'
 
-syn cluster logLvs contains=logLvFatal,logLvEmergency,logLvAlert,logLvCritical,logLvError,logLvFailure,logLvFault,logLvNack,logLvWarning,logLvBad,logLvNotice,logLvInfo,logLvDebug,logLvTrace
+syn cluster logLvs contains=logLvFatal,logLvEmergency,logLvAlert,logLvCritical,logLvError,logLvFailure,logLvWarning,logLvNotice,logLvInfo,logLvDebug,logLvTrace
 
 " Highlight Links
 " ------------------------------
@@ -167,14 +172,19 @@ hi def link logLvAlert          ErrorMsg
 hi def link logLvCritical       ErrorMsg
 hi def link logLvError          ErrorMsg
 hi def link logLvFailure        ErrorMsg
-hi def link logLvFault          ErrorMsg
-hi def link logLvNack           ErrorMsg
 hi def link logLvWarning        WarningMsg
-hi def link logLvBad            WarningMsg
 hi def link logLvNotice         Exception
 hi def link logLvInfo           MoreMsg
 hi def link logLvDebug          Debug
 hi def link logLvTrace          Comment
+
+hi def link logClear            Constant
+hi def link logNormal           Constant
+hi def link logHealthy          Constant
+hi def link logSuccess          Constant
+hi def link logOptimal          Constant
+hi def link logBad              ErrorMsg
+hi def link logWarn             WarningMsg
 
 
 let b:current_syntax = "log"
